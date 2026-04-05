@@ -25,7 +25,7 @@ export default function StudentDetailModal({ isOpen, onClose, student, onEdit, o
           <X className="h-5 w-5" />
         </button>
         
-        <h2 className="text-xl font-bold text-[var(--color-foreground)] mb-6 tracking-tight">
+        <h2 className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-300 mb-6">
           Detail Mahasiswa
         </h2>
 

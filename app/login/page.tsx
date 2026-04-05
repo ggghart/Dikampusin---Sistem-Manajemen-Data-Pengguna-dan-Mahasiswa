@@ -61,7 +61,7 @@ export default function LoginPage() {
         {/* Kolom Kanan: Login Form */}
         <GlassCard className="w-full max-w-md mx-auto animate-in fade-in zoom-in-95 duration-500">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-[var(--color-foreground)] tracking-tight">
+            <h2 className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-300">
               Selamat Datang
             </h2>
             <p className="text-sm text-gray-500 mt-2">Masuk ke akun Anda untuk mengelola data</p>

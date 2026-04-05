@@ -15,7 +15,11 @@ export async function login(formData: FormData) {
   });
 
   if (error) {
-    return { error: error.message };
+    let errorMessage = error.message;
+    if (errorMessage.includes("Invalid login credentials")) {
+      errorMessage = "Email atau password anda salah.";
+    }
+    return { error: errorMessage };
   }
 
   revalidatePath("/", "layout");
@@ -34,7 +38,11 @@ export async function register(formData: FormData) {
   });
 
   if (error) {
-    return { error: error.message };
+    let errorMessage = error.message;
+    if (errorMessage.includes("User already registered") || errorMessage.includes("already exists")) {
+      errorMessage = "Email anda sudah terdaftar.";
+    }
+    return { error: errorMessage };
   }
 
   // Insert into public.users as specified in the project plan

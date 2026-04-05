@@ -14,7 +14,7 @@ export default function ProfileForm({ profile, userEmail }: { profile: any, user
   return (
     <GlassCard className="w-full max-w-xl mx-auto mt-8">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-[var(--color-foreground)] tracking-tight">
+        <h2 className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-300">
           Profil Pengguna
         </h2>
         <p className="text-sm text-gray-500 mt-2">
