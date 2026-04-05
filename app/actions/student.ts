@@ -45,6 +45,16 @@ export async function addStudent(formData: FormData) {
   const jurusan = formData.get("jurusan") as string;
   const tanggal_lahir = formData.get("tanggal_lahir") as string;
 
+  const { data: existingNim } = await supabase.from("students").select("nim").eq("nim", nim).single();
+  if (existingNim) {
+    return { error: "NIM sudah terdaftar!" };
+  }
+
+  const { data: existingEmail } = await supabase.from("students").select("email").eq("email", email).single();
+  if (existingEmail) {
+    return { error: "Alamat email sudah terdaftar pada mahasiswa!" };
+  }
+
   const { error } = await supabase.from("students").insert({
     nim,
     nama,
@@ -67,6 +77,16 @@ export async function updateStudent(id: number, formData: FormData) {
   const email = formData.get("email") as string;
   const jurusan = formData.get("jurusan") as string;
   const tanggal_lahir = formData.get("tanggal_lahir") as string;
+
+  const { data: existingNim } = await supabase.from("students").select("id").eq("nim", nim).neq("id", id).single();
+  if (existingNim) {
+    return { error: "NIM sudah terdaftar!" };
+  }
+
+  const { data: existingEmail } = await supabase.from("students").select("id").eq("email", email).neq("id", id).single();
+  if (existingEmail) {
+    return { error: "Alamat email sudah terdaftar pada mahasiswa!" };
+  }
 
   const { error } = await supabase.from("students").update({
     nim,
