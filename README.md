@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DiKampusin - Student Information Management System
 
-## Getting Started
+**DiKampusin** is a comprehensive student management prototype platform specifically designed to facilitate student data administration. It prioritizes multi-layered security, agile performance, and cutting-edge design aesthetics featuring a *Glassmorphism* style.
 
-First, run the development server:
+---
 
+## Architecture & Technical Decisions
+
+This project's development adheres to the **Modern Web Stack** standard, where the frontend, server, and database seamlessly integrate into a cohesive execution formation. The core implementation foundations are:
+
+1. **Next.js (App Router) & React 19**
+   - The majority of layouts and data fetching are executed using pure *Server-Side Rendering* (SSR) to reduce browser load times and achieve maximum SEO scalability.
+   - Reactive **Server Actions** are utilized for data manipulation forms (Create, Update, Delete) to execute logic on the server side without needing traditional `/api` endpoints. This makes component communication direct, instant, and *type-safe*.
+
+2. **Supabase (@supabase/ssr) & PostgreSQL**
+   - The architecture for processing and authenticating data relies entirely on the Supabase instance (BaaS).
+   - Utilizing the SSR library package ensures that *session auth cookies* are handled securely and seamlessly within *Middleware*, as well as during the pre-rendering phase when verifying user states (Logged In or Logged Out).
+   - The system does not require a separate server for security logic, as data protection is enforced through Supabase's RLS (*Row Level Security*) schema.
+   
+3. **Tailwind CSS v4 & Experiential User Experience (UX)**
+   - Styling implementation utilizes the latest V4 optimization methods with a zero-config-file architecture.
+   - **Glassmorphism Concept**: To avoid rigid tabular data displays, the interface is wrapped in a "Midnight Indigo" aesthetic using a combination of the CSS `backdrop-blur` property, radial gradients, and translucent glass color palettes that react fluidly in both color modes (*dark/light mode*).
+
+4. **Server-Side Searching & Pagination Synchronization**
+   - Performance-heavy computing operations (such as filtering, counting, and limiting dozens of student data records) are implemented using an URL parameter approach (*Search Params* like `?page=x&q=name`). This pattern makes search history easily shareable (*shareable link*) compared to letting data pile up in the client-side browser memory state.
+
+---
+
+## How to Run the Project (Local Development)
+
+This local setup guide will help you configure the environment so you can start modifying and securely running this application on your personal browser.
+
+### 1. Prerequisites
+Ensure your machine's ecosystem has the following software installed:
+- **Node.js** (Minimum version v18.x+ highly recommended)
+- **NPM / Bun / Yarn** (as the *Package Manager*)
+
+### 2. Clone the Repository
+Run this command in your Operating System's Command Prompt or Terminal:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ggghart/Dikampusin---Sistem-Manajemen-Data-Pengguna-dan-Mahasiswa.git
+cd Dikampusin---Sistem-Manajemen-Data-Pengguna-dan-Mahasiswa
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Environment Variables Configuration
+Duplicate or create a file named `.env.local` in the **root directory** of the program and paste the authorization keys for this project's Supabase database service.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://xmamumrpvbgosonsjiwk.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhtYW11bXJwdmJnb3NvbnNqaXdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzMTczNTQsImV4cCI6MjA5MDg5MzM1NH0.YmXJUKhA4Y5JwUYEOX3E6jgmjm-51OY_vKCOTqHzAsE
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Install Dependencies
+Begin downloading all related software packages listed in the `package.json`:
+```bash
+npm install
+```
 
-## Learn More
+### 5. Start the Live Development Server
+Once successfully installed, compile the application engine via the dev script:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 6. Successfully Compiled!
+Now launch your favorite Web Browser (like Chrome/Edge/Safari) and visit the development server entry point:
+**[http://localhost:3000](http://localhost:3000)**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*© 2026 DiKampusin. All rights reserved.*

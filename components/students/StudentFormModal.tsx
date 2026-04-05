@@ -17,6 +17,13 @@ export default function StudentFormModal({ isOpen, onClose, student }: StudentFo
   const isEdit = !!student;
   
   const handleAction = async (prevState: any, formData: FormData) => {
+    const nim = formData.get("nim") as string;
+    
+    // Validasi NIM hanya boleh berisi angka
+    if (!/^\d+$/.test(nim)) {
+      return { error: "NIM harus berisi angka!" };
+    }
+
     if (isEdit) {
       const res = await updateStudent(student.id, formData);
       if (res.success) {
