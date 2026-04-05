@@ -24,6 +24,12 @@ This project's development adheres to the **Modern Web Stack** standard, where t
 4. **Server-Side Searching & Pagination Synchronization**
    - Performance-heavy computing operations (such as filtering, counting, and limiting dozens of student data records) are implemented using an URL parameter approach (*Search Params* like `?page=x&q=name`). This pattern makes search history easily shareable (*shareable link*) compared to letting data pile up in the client-side browser memory state.
 
+5. **Software Architecture Pattern (Serverless MVC)**
+   - The project applies a modernized iteration of the **MVC** (Model-View-Controller) pattern adapted specifically for React Server Components, also resembling a *Backend-For-Frontend* (BFF) layout.
+   - **View (Presentation):** React Components (`app/`, `components/`) act purely as the user interface rendering engine.
+   - **Controller (Logic):** Next.js Server Actions (`app/actions/`) handle direct business validations and request interceptors.
+   - **Model (Data):** Supabase (PostgreSQL) encapsulates data storage, column-level unique constraints, and schema definitions.
+
 ---
 
 ## How to Run the Project (Local Development)
